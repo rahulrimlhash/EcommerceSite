@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    {% if category %}
+        {{category.description|truncatewords:150}}
+    {% else %}
+        Welcome to ABC store where you can buys different products...
+    {% endif %}
+{% endblock %}
+
+{% block title %}
+      {% if category %}
+        {{category.name}} - ABC Store
+      {% else %}
+        See Our New Collections - ABC Store
+      {% endif %}
+{% endblock %}
+
+{% block content %}
+   {% if category %}
+     <div>
+         <div class="row my_row_class">
+             <div class="mx-auto">
+             <p><a href="{% url 'shop:allProdCat' %}">Our Product Collections</a> </p>
+          </div>
+         </div>
+     </div>
+   {% endif %}
+   <div class="mx-auto">
+       {% if cateogory %}
+       <img class="my_image" src="{{category.image.url}}" alt="{{category.name}}">
+   </div>
+   <br/>
+   <div>
+       <h1 class="text-center my_title">{{category.name}}</h1>
+       <p class="text-justify">{{category.name}}</p>
+   </div>
+   {% else %}
+    <div>
+     <img class="my_image my_image_padding" src="{% static 'img/banner.png' %}" alt="Our product" width="1300px">
+    </div>
+     <br/>
+     <div>
+         <h1 class="text-center my title"> our products collections </h1>
+         <p class="text-justify">Electronic commerce, commonly known as e-commerce, is the buying and selling of product or service over electronic systems such as the Internet and other computer networks. Electronic commerce draws on such technologies as electronic funds transfer, supply chain management, Internet marketing, online transaction processing, Electronic Data Interchange (EDI), inventory management systems, and automated data collection systems.
+
+           Modern electronic commerce typically uses the World Wide Web at least at one point in the transaction’s life-cycle, although it may encompass a wider range of technologies such as e-mail, mobile devices and telephones as well.</p>
+     </div>
+     {% endif %}
+
+
+     <div class="container">
+         <div class="row mx-auto">
+             {% for product in products %}
+             <div class="my_bottom_margin col-9 col-sm-12 col-md-4 xol-lg-4">
+                 <div class="card text-center" style="min-width:18rem;">
+                    <a href="{{product.get_url}}"><img class="card-img-top my_image" src="{{product.image.url}}" alt="{{product.name}}"></a>
+                 <div class="card-body">
+                     <h4>{{product.name}}</h4>
+                     <h6>{{product.price}}</h6>
+                 </div>
+                 </div>
+             </div>
+             {% endfor %}
+         </div>
+     </div>
+
+{% endblock %}
+
+<h4>{{product.name}}</h4>
+<h6>{{product.price}}</h6>
+<a href=""><img src="{{product.image.url}}" alt="{{product.name}}"></a>
