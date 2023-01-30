@@ -111,3 +111,36 @@ padding-bottom : 10px;
 
 }
 
+.my_search{
+
+    padding-top : 20px;
+
+
+}
+
+/*** Cart page ***/
+.my_custom_table{
+
+   min-width : 400px;
+   font-size : 14px;
+}
+.my_custom_thead{
+
+      font-width : normal;
+      text_transform : uppercase;
+      letter-spacing : .2em;
+      background-color : #f8f8fa!important;
+
+}
+
+.custom_a{
+
+   text_decoration : none;
+   color : #868e96 !important;
+
+}
+
+.my_custom_button{
+
+   margin-top : 5px;
+}
